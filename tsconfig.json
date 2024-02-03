@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "CommonJS",
+    "lib": ["ES2021", "dom", "ES2020"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@_playwright/*": ["src/*"],
+      "@_pw-config": ["playwright.config.ts"],
+      "@_config/*": ["config/*"]
+    }
+  },
+  "sourceMap": true,
+  "include": ["**/*.ts"]
+}

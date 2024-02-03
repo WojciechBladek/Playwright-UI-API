@@ -1,0 +1,9 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+playwright.env.json
+.env
+playwright/.auth
+src/user-data/credentials.json
+
