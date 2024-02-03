@@ -1,8 +1,8 @@
-# Tests for skleptest.pl application
+# Tests for PracticeSoftwareTesting application
 
-## GEN Shop Application
+## TOOLSHOP.demo Application
 
-Repository: https://github.com/WojciechBladek/WojciechBladek/tree/main/Playwright
+Repository: https://github.com/WojciechBladek/Playwright-UI-AP
 
 Follow instructions in app README
 
@@ -23,10 +23,7 @@ Follow instructions in app README
 - prepare local env file: `.env`
 - .env file variables example:
 ```
-BASE_URL='https://skleptest.pl/'
-USER_EMAIL='email.adress@test.com'
-USER_PASSWORD='password'
-USER_NAME= 'email.adress'
+BASE_URL='https://practicesoftwaretesting.com/'
 ```
 - go to base url and then create an account with your data and substitute it into the variables in .env
 
