@@ -1,20 +1,15 @@
-// import { randomUserData } from '@_playwright/factories/user.factory';
-// import { pageObjectTest } from '@_playwright/fixtures/page-object.fixture';
-// import { RegisterPage } from '@_playwright/pages/register.page';
-// import { STORAGE_PATH } from '@_pw-config';
+import { pageObjectTest } from '@_playwright/fixtures/page-object.fixture';
+import { LoginPage } from '@_playwright/pages/login.page';
+import { UserLoginModelData } from '@_playwright/test-data/user.data';
 
-// interface Register {
-//   registerNewUser: RegisterPage;
-// }
+interface Login {
+  loginUser: LoginPage;
+}
 
-// export const registerUserTest = pageObjectTest.extend<Register>({
-//   registerNewUser: async ({ registerPage, page }, use) => {
-//     const userData = randomUserData();
+export const loginUserTest = pageObjectTest.extend<Login>({
+  loginUser: async ({ loginPage }, use) => {
+    await loginPage.login(UserLoginModelData);
 
-//     await registerPage.goto();
-//     await registerPage.registerNewUser(userData);
-
-//     await page.context().storageState({ path: STORAGE_PATH });
-//     await use(registerPage);
-//   },
-// });
+    await use(loginPage);
+  },
+});

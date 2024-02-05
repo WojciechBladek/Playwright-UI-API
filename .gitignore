@@ -6,4 +6,3 @@ playwright.env.json
 .env
 playwright/.auth
 src/test-data/credentials.json
-
