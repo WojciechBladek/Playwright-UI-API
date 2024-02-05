@@ -1,20 +1,13 @@
 import { randomRegisterUserData } from '@_playwright/factories/register-user.factory';
 import { expect, test } from '@_playwright/fixtures/merge.fixture';
 
-test.describe.configure({ mode: 'serial' });
 test.describe('Verify register', () => {
   const registerUserData = randomRegisterUserData();
-  // optional method if we don't wanna use serial mode, but not stable.
-  // const credentials = {
-  //   email: registerUserData.email,
-  //   password: registerUserData.password,
-  // };
-  // fs.writeFileSync(
-  //   'src/user-data/credentials.json',
-  //   JSON.stringify(credentials),
-  // );
 
-  test('register with correct data and login ', async ({ registerPage }) => {
+  test('register with correct data and login ', async ({
+    loginPage,
+    registerPage,
+  }) => {
     // Arrange
     const exceptedUrlName = 'auth/login';
 
@@ -24,19 +17,41 @@ test.describe('Verify register', () => {
 
     // Assert
     expect(registerPage.getUrl()).toContain(exceptedUrlName);
+
+    await test.step('login after registration', async () => {
+      const exceptedUrl = 'account';
+      // Arrange
+
+      // Act
+      await loginPage.loginNewUser(registerUserData);
+      await loginPage.waitForPageToLoadUrl(`**/${exceptedUrl}`);
+
+      // Assert
+      expect(loginPage.getUrl()).toContain(exceptedUrl);
+      await expect(loginPage.nickName).toHaveText(
+        registerUserData.first_name + ' ' + registerUserData.last_name,
+      );
+    });
   });
-  test('login after registration', async ({ loginPage }) => {
-    const exceptedUrl = 'account';
-    // Arrange
 
-    // Act
-    await loginPage.loginNewUser(registerUserData);
-    await loginPage.waitForPageToLoadUrl(`**/${exceptedUrl}`);
+  test('register via api with correct data and login ', async ({
+    registerAPI,
+    loginAPI,
+  }) => {
+    // act
+    const register = await registerAPI.registerNewUser(registerUserData);
 
-    // Assert
-    expect(loginPage.getUrl()).toContain(exceptedUrl);
-    await expect(loginPage.nickName).toHaveText(
-      registerUserData.firstName + ' ' + registerUserData.lastName,
-    );
+    // assert
+    expect(register.response.status()).toEqual(201);
+    expect(register.object).toStrictEqual(registerUserData);
+
+    await test.step('login via api after registration', async () => {
+      // Act
+      const login =
+        await loginAPI.loginNewUserAfterRegistration(registerUserData);
+
+      // Assert
+      await expect(login).toBeOK();
+    });
   });
 });

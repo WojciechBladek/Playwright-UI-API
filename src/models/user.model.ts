@@ -1,13 +1,18 @@
 export interface RegisterNewUserModel {
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
+  first_name: string;
+  last_name: string;
+  dob: string;
   address: string;
-  postCode: string;
+  postcode: string;
   city: string;
   state: string;
   country: string;
-  phoneNumber: string;
+  phone: string;
   email: string;
   password: string;
+}
+
+export interface LoginNewUserModel {
+  userEmail: string;
+  userPassword: string;
 }
