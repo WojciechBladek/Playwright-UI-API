@@ -23,7 +23,7 @@ test.describe('Verify register', () => {
       // Arrange
 
       // Act
-      await loginPage.loginNewUser(registerUserData);
+      await loginPage.login(registerUserData);
       await loginPage.waitForPageToLoadUrl(`**/${exceptedUrl}`);
 
       // Assert
@@ -47,8 +47,7 @@ test.describe('Verify register', () => {
 
     await test.step('login via api after registration', async () => {
       // Act
-      const login =
-        await loginAPI.loginNewUserAfterRegistration(registerUserData);
+      const login = await loginAPI.login(registerUserData);
 
       // Assert
       await expect(login).toBeOK();

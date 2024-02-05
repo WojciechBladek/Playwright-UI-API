@@ -1,5 +1,8 @@
 import { BaseAPI } from './base.api';
-import { RegisterNewUserModel } from '@_playwright/models/user.model';
+import {
+  LoginUserModel,
+  RegisterNewUserModel,
+} from '@_playwright/models/user.model';
 import { APIRequestContext, APIResponse } from 'playwright';
 
 export class LoginAPI extends BaseAPI {
@@ -7,8 +10,8 @@ export class LoginAPI extends BaseAPI {
     super(request);
   }
 
-  async loginNewUserAfterRegistration(
-    loginUserData: RegisterNewUserModel,
+  async login(
+    loginUserData: RegisterNewUserModel | LoginUserModel,
   ): Promise<APIResponse> {
     const response = await this.request.post(this.loginUser, {
       form: {

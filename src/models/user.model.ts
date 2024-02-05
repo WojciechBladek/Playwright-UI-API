@@ -12,7 +12,11 @@ export interface RegisterNewUserModel {
   password: string;
 }
 
-export interface LoginNewUserModel {
-  userEmail: string;
-  userPassword: string;
+export interface LoginUserModel {
+  email: string;
+  password: string;
+}
+
+export interface UserNameModel {
+  nickname: string;
 }
