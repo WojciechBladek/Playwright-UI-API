@@ -1,3 +1,3 @@
-export async function getRandomValue(values: string[]): Promise<string> {
-  return values[Math.round(Math.random() * (values.length - 1))];
+export function getRandomValue(array: string[]): string {
+  return array[Math.round(Math.random() * (array.length - 1))];
 }

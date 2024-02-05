@@ -25,15 +25,15 @@ export class RegisterPage extends BasePage {
 
   async registerNewUser(userData: RegisterNewUserModel): Promise<void> {
     // fill form
-    await this.firstNameInput.fill(userData.firstName);
-    await this.lastNameInput.fill(userData.lastName);
-    await this.dateOfBirthInput.fill(userData.dateOfBirth);
+    await this.firstNameInput.fill(userData.first_name);
+    await this.lastNameInput.fill(userData.last_name);
+    await this.dateOfBirthInput.fill(userData.dob);
     await this.addressInput.fill(userData.address);
-    await this.postCodeInput.fill(userData.postCode);
+    await this.postCodeInput.fill(userData.postcode);
     await this.cityInput.fill(userData.city);
     await this.stateInput.fill(userData.state);
     await this.countryInput.selectOption(userData.country);
-    await this.phoneNumberInput.fill(userData.phoneNumber);
+    await this.phoneNumberInput.fill(userData.phone);
     await this.emailAddressInput.fill(userData.email);
     await this.passwordInput.fill(userData.password);
 
