@@ -19,8 +19,8 @@ test.describe('Verify register', () => {
     expect(registerPage.getUrl()).toContain(exceptedUrlName);
 
     await test.step('login after registration', async () => {
-      const exceptedUrl = 'account';
       // Arrange
+      const exceptedUrl = 'account';
 
       // Act
       await loginPage.login(registerUserData);

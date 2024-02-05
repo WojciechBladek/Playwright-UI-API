@@ -21,4 +21,11 @@ export class LoginAPI extends BaseAPI {
     });
     return response;
   }
+
+  async getToken(loginUserData: RegisterNewUserModel): Promise<string> {
+    const response = await this.login(loginUserData);
+    const tokenBody = await response.json();
+    const token = tokenBody['access_token'];
+    return token;
+  }
 }

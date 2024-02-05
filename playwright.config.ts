@@ -1,4 +1,4 @@
-import { BASE_URL } from '@_config/env.config';
+import { API_TOKEN, BASE_URL } from '@_config/env.config';
 import { defineConfig, devices } from '@playwright/test';
 
 export const STORAGE_PATH = 'playwright/.auth/user.json';
@@ -30,6 +30,9 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: 'retain-on-failure',
     testIdAttribute: 'data-test',
+    extraHTTPHeaders: {
+      Authorization: `bearer ${API_TOKEN}`,
+    },
   },
 
   projects: [
@@ -37,7 +40,7 @@ export default defineConfig({
     {
       name: 'chromium-logged',
       grep: /@logged/,
-      use: { ...devices['Desktop Chrome'], storageState: STORAGE_PATH },
+      use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup'],
     },
     {

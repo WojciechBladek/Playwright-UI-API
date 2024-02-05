@@ -4,7 +4,7 @@ import {
   UserNameModelData,
 } from '@_playwright/test-data/user.data';
 
-test.describe('Verify login', () => {
+test.describe('Verify login @logged', () => {
   test('Login with correct data and login ', async ({ loginPage }) => {
     // Arrange
     const exceptedUserName = UserNameModelData.nickname;
@@ -17,7 +17,9 @@ test.describe('Verify login', () => {
     await expect(loginPage.nickName).toHaveText(exceptedUserName);
   });
 
-  test('Login via api with correct data and login ', async ({ loginAPI }) => {
+  test('Login via api with correct data and login @logged', async ({
+    loginAPI,
+  }) => {
     // Act
     const login = await loginAPI.login(UserLoginModelData);
 

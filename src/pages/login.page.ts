@@ -12,7 +12,6 @@ export class LoginPage extends BasePage {
   passwordInput = this.page.getByTestId('password');
   nickName = this.page.getByTestId('nav-user-menu');
 
-
   loginButton = this.page.getByTestId('login-submit');
 
   constructor(page: Page) {
@@ -26,5 +25,6 @@ export class LoginPage extends BasePage {
 
     // Register
     await this.loginButton.click();
-  }
+  } 
+  
 }
