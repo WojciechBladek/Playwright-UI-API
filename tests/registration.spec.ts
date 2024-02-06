@@ -2,13 +2,12 @@ import { randomRegisterUserData } from '@_playwright/factories/register-user.fac
 import { expect, test } from '@_playwright/fixtures/merge.fixture';
 
 test.describe('Verify register', () => {
-  const registerUserData = randomRegisterUserData();
-
   test('register with correct data and login ', async ({
     loginPage,
     registerPage,
   }) => {
     // Arrange
+    const registerUserData = randomRegisterUserData();
     const exceptedUrlName = 'auth/login';
 
     // Act
@@ -28,16 +27,18 @@ test.describe('Verify register', () => {
 
       // Assert
       expect(loginPage.getUrl()).toContain(exceptedUrl);
-      // await expect(loginPage.nickName).toHaveText(
-      //   registerUserData.first_name + ' ' + registerUserData.last_name,
-      // ); flaky assertion
+      await expect(loginPage.nickName).toHaveText(
+        registerUserData.first_name + ' ' + registerUserData.last_name,
+      );
     });
   });
 
-  test('register via api with correct data and login ', async ({
+  test('register via api with correct data and login  ', async ({
     registerAPI,
     loginAPI,
   }) => {
+    // Arrange
+    const registerUserData = randomRegisterUserData();
     // act
     const register = await registerAPI.registerNewUser(registerUserData);
 

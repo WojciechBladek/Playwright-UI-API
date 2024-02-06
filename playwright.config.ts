@@ -30,9 +30,6 @@ export default defineConfig({
     baseURL: BASE_URL,
     trace: 'retain-on-failure',
     testIdAttribute: 'data-test',
-    extraHTTPHeaders: {
-      Authorization: `bearer ${API_TOKEN}`,
-    },
   },
 
   projects: [
@@ -40,7 +37,12 @@ export default defineConfig({
     {
       name: 'chromium-logged',
       grep: /@logged/,
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        extraHTTPHeaders: {
+          Authorization: `bearer ${API_TOKEN}`,
+        },
+      },
       dependencies: ['setup'],
     },
     {
