@@ -1,3 +1,4 @@
+import { AccountPage } from './account.page';
 import {
   LoginUserModel,
   RegisterNewUserModel,
@@ -10,7 +11,6 @@ export class LoginPage extends BasePage {
 
   emailAddressInput = this.page.getByTestId('email');
   passwordInput = this.page.getByTestId('password');
-  nickName = this.page.getByTestId('nav-user-menu');
 
   loginButton = this.page.getByTestId('login-submit');
 
@@ -18,13 +18,15 @@ export class LoginPage extends BasePage {
     super(page);
   }
 
-  async login(userData: RegisterNewUserModel | LoginUserModel): Promise<void> {
+  async login(
+    userData: RegisterNewUserModel | LoginUserModel,
+  ): Promise<AccountPage> {
     // fill form
     await this.emailAddressInput.fill(userData.email);
     await this.passwordInput.fill(userData.password);
 
     // Register
     await this.loginButton.click();
-  } 
-  
+    return new AccountPage(this.page);
+  }
 }

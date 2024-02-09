@@ -8,13 +8,15 @@ test.describe('Verify login @logged', () => {
   test('Login with correct data and login ', async ({ loginPage }) => {
     // Arrange
     const exceptedUserName = UserNameModelData.nickname;
-    const exceptedUrlName = 'auth/login';
+    const exceptedUrlName = 'account';
 
     // Act
-    await loginPage.login(UserLoginModelData);
+    const accountPage = await loginPage.login(UserLoginModelData);
+    await accountPage.waitForPageToLoadUrl(`**/${accountPage.url}`);
+    const exceptedNickname = await accountPage.getNickname();
 
-    expect(loginPage.getUrl()).toContain(exceptedUrlName);
-    await expect(loginPage.nickName).toHaveText(exceptedUserName);
+    expect(accountPage.getUrl()).toContain(exceptedUrlName);
+    expect(exceptedNickname).toEqual(exceptedUserName);
   });
 
   test('Login via api with correct data and login @logged', async ({

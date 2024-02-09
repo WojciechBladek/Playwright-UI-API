@@ -1,10 +1,12 @@
 import { BaseAPI } from './base.api';
+import { LoginAPI } from './login.api';
 import { RegisterNewUserModel } from '@_playwright/models/user.model';
 import { APIRequestContext, APIResponse } from 'playwright';
 
 interface RegisterNewUser {
   response: APIResponse;
   object: object;
+  loginAPI: LoginAPI;
 }
 export class RegisterAPI extends BaseAPI {
   constructor(request: APIRequestContext) {
@@ -47,6 +49,7 @@ export class RegisterAPI extends BaseAPI {
     return {
       response: response,
       object: exceptedObject,
+      loginAPI: new LoginAPI(this.request),
     };
   }
 }
