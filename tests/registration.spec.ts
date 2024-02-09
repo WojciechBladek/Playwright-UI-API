@@ -2,16 +2,13 @@ import { randomRegisterUserData } from '@_playwright/factories/register-user.fac
 import { expect, test } from '@_playwright/fixtures/merge.fixture';
 
 test.describe('Verify register', () => {
-  test('register with correct data and login ', async ({
-    loginPage,
-    registerPage,
-  }) => {
+  test('register with correct data and login ', async ({ registerPage }) => {
     // Arrange
     const registerUserData = randomRegisterUserData();
     const exceptedUrlName = 'auth/login';
 
     // Act
-    await registerPage.registerNewUser(registerUserData);
+    const loginPage = await registerPage.registerNewUser(registerUserData);
     await registerPage.waitForPageToLoadUrl(`**/${exceptedUrlName}`);
 
     // Assert
@@ -22,12 +19,12 @@ test.describe('Verify register', () => {
       const exceptedUrl = 'account';
 
       // Act
-      await loginPage.login(registerUserData);
+      const accountPage = await loginPage.login(registerUserData);
       await loginPage.waitForPageToLoadUrl(`**/${exceptedUrl}`);
 
       // Assert
       expect(loginPage.getUrl()).toContain(exceptedUrl);
-      await expect(loginPage.nickName).toHaveText(
+      await expect(accountPage.nickName).toHaveText(
         registerUserData.first_name + ' ' + registerUserData.last_name,
       );
     });
@@ -35,7 +32,6 @@ test.describe('Verify register', () => {
 
   test('register via api with correct data and login  ', async ({
     registerAPI,
-    loginAPI,
   }) => {
     // Arrange
     const registerUserData = randomRegisterUserData();
@@ -48,7 +44,7 @@ test.describe('Verify register', () => {
 
     await test.step('login via api after registration', async () => {
       // Act
-      const login = await loginAPI.login(registerUserData);
+      const login = await register.loginAPI.login(registerUserData);
 
       // Assert
       await expect(login).toBeOK();

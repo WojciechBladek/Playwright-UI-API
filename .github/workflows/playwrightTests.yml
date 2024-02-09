@@ -48,8 +48,7 @@ jobs:
         run: |
           echo "${{ secrets.ENV }}" > .env
       - name: Run Playwright tests
-        run:
-          npm run test
+        run: npm run test
       - name: Archive test results
         if: success() || failure()
         uses: actions/upload-artifact@v4

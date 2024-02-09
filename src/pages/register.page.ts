@@ -1,3 +1,4 @@
+import { LoginPage } from './login.page';
 import { RegisterNewUserModel } from '@_playwright/models/user.model';
 import { BasePage } from '@_playwright/pages/base.page';
 import { Page } from '@playwright/test';
@@ -23,7 +24,7 @@ export class RegisterPage extends BasePage {
     super(page);
   }
 
-  async registerNewUser(userData: RegisterNewUserModel): Promise<void> {
+  async registerNewUser(userData: RegisterNewUserModel): Promise<LoginPage> {
     // fill form
     await this.firstNameInput.fill(userData.first_name);
     await this.lastNameInput.fill(userData.last_name);
@@ -39,5 +40,7 @@ export class RegisterPage extends BasePage {
 
     // Register
     await this.registerButton.click();
+
+    return new LoginPage(this.page);
   }
 }

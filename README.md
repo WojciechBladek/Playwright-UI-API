@@ -22,9 +22,11 @@ Follow instructions in app README
 - setup husky with: `npx husky install`
 - prepare local env file: `.env`
 - .env file variables example:
+
 ```
 BASE_URL='https://practicesoftwaretesting.com/'
 ```
+
 - go to base url and then create an account with your data and substitute it into the variables in .env
 
 ### Update framework
