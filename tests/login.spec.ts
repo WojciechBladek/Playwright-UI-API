@@ -8,14 +8,16 @@ test.describe('Verify login @logged', () => {
   test('Login with correct data and login ', async ({ loginPage }) => {
     // Arrange
     const exceptedUserName = UserNameModelData.nickname;
-    const exceptedUrlName = 'account';
+    const expectedUrlName = 'account';
 
     // Act
     const accountPage = await loginPage.login(UserLoginModelData);
     await accountPage.waitForPageToLoadUrl(`**/${accountPage.url}`);
     const exceptedNickname = await accountPage.getNickname();
 
-    expect(accountPage.getUrl()).toContain(exceptedUrlName);
+    expect(accountPage.getUrl(), 'User logged with success').toContain(
+      expectedUrlName,
+    );
     expect(exceptedNickname).toEqual(exceptedUserName);
   });
 
@@ -26,6 +28,6 @@ test.describe('Verify login @logged', () => {
     const login = await loginAPI.login(UserLoginModelData);
 
     // Assert
-    await expect(login).toBeOK();
+    await expect(login, 'User logged with success').toBeOK();
   });
 });
