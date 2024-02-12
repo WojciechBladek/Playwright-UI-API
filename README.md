@@ -21,10 +21,24 @@ Follow instructions in app README
 - setup Playwright with: `npx playwright install --with-deps chromium`
 - setup husky with: `npx husky install`
 - prepare local env file: `.env`
+- to run MailTrap tests u need to create account on (https://mailtrap.io/home)
 - .env file variables example:
+- .env TEMPLATE
+- API_TOKEN,USER_EMAIL, USER_PASSWORD, USER_NAME - will be generated automatically in the setup file
 
-```
+```javascript
 BASE_URL='https://practicesoftwaretesting.com/'
+API_TOKEN=''
+USER_EMAIL=''
+USER_PASSWORD=''
+USER_NAME=''
+HOST=''
+USER=''
+PASSWORD=''
+MAIL=''
+INBOX_TOKEN=''
+ACCOUNT_ID_MAILTRAP=''
+INBOX_ID_MAILTRAP=''
 ```
 
 - go to base url and then create an account with your data and substitute it into the variables in .env
@@ -39,25 +53,25 @@ BASE_URL='https://practicesoftwaretesting.com/'
 
 Run all tests:
 
-```
+```javascript
 npx playwright test
 ```
 
 Run all tests with tags:
 
-```
+```javascript
 npx playwright test --grep "@GEN-S1-01"
 ```
 
 Run all tests without tags:
 
-```
+```javascript
 npx playwright test --grep-invert "@GEN-S1-01"
 ```
 
 Repeat tests with value:
 
-```
+```javascript
 npx playwright test --grep "@@GEN-S2-01" --repeat-each=5
 ```
 
