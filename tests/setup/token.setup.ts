@@ -6,6 +6,7 @@ import * as fs from 'fs';
 setup('Generate .env file', async ({ loginAPI, registerAPI }) => {
   // Arrange
   const registerUserData = randomRegisterUserData();
+
   // Act
   await registerAPI.registerNewUser(registerUserData);
   const token = await loginAPI.getToken(registerUserData);
