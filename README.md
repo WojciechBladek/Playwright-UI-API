@@ -39,6 +39,7 @@ MAIL=''
 INBOX_TOKEN=''
 ACCOUNT_ID_MAILTRAP=''
 INBOX_ID_MAILTRAP=''
+DEV='1'
 ```
 
 - go to base url and then create an account with your data and substitute it into the variables in .env

@@ -1,4 +1,4 @@
-import { API_TOKEN, BASE_URL } from '@_config/env.config';
+import { API_TOKEN, BASE_URL, DEV } from '@_config/env.config';
 import { defineConfig, devices } from '@playwright/test';
 
 export const STORAGE_PATH = 'playwright/.auth/user.json';
@@ -27,7 +27,7 @@ export default defineConfig({
     ],
   ],
   use: {
-    baseURL: BASE_URL,
+    baseURL: DEV === '1' ? BASE_URL : 'https://localhost:4200',
     trace: 'retain-on-failure',
     testIdAttribute: 'data-test',
   },
