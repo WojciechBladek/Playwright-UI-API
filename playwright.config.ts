@@ -2,6 +2,7 @@ import { API_TOKEN, BASE_URL, DEV } from '@_config/env.config';
 import { defineConfig, devices } from '@playwright/test';
 
 export const STORAGE_PATH = 'playwright/.auth/user.json';
+export const RESPONSE_TIMEOUT = 10_000;
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
