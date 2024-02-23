@@ -11,6 +11,7 @@ function requireEnvVariable(envVariable: string): string {
 }
 
 export const BASE_URL = requireEnvVariable('BASE_URL');
+export const DEV = requireEnvVariable('DEV');
 export const USER_EMAIL = requireEnvVariable('USER_EMAIL');
 export const USER_PASSWORD = requireEnvVariable('USER_PASSWORD');
 export const USER_NAME = requireEnvVariable('USER_NAME');
