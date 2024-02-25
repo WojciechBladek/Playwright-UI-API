@@ -77,3 +77,11 @@ npx playwright test --grep "@@GEN-S2-01" --repeat-each=5
 ```
 
 For more usage cases look in `package.json` scripts section.
+
+## Allure test report
+To run allure do following steps, u need to install globally on our system.
+```javascript
+install allure
+install JAVA
+```
+![alt text](image.png)

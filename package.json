@@ -13,7 +13,8 @@
     "test:headed": "npm run test -- --headed",
     "test:ui": "npm run test -- --ui",
     "test:all-projects": "npx playwright test --project 'chromium-logged' 'chromium-non-logged'",
-    "show-report": "npx playwright show-report"
+    "show-report": "npx playwright show-report",
+    "allure-report": "npx allure serve"
   },
   "keywords": [],
   "author": "Wojciech Bladek",
@@ -31,7 +32,8 @@
     "eslint-plugin-playwright": "^0.16.0",
     "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "allure-playwright": "2.12.0"
   },
   "dependencies": {
     "@types/nodemailer": "^6.4.14",
