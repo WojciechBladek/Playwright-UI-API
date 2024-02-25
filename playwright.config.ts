@@ -26,6 +26,15 @@ export default defineConfig({
         embedAnnotationsAsProperties: true,
       },
     ],
+    ['list'],
+    [
+      'allure-playwright',
+      {
+        environmentInfo: {
+          node_version: process.version,
+        },
+      },
+    ],
   ],
   use: {
     baseURL: DEV === '1' ? BASE_URL : 'https://localhost:4200',

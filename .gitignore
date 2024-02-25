@@ -8,3 +8,5 @@ playwright/.auth
 src/test-data/credentials.json
 tests/test.spec.ts
 screenshots
+/allure-results/
+/allure-report/
